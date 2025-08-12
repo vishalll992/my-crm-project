@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   php:
     build: .
@@ -13,8 +12,11 @@ services:
       - DB_PASS=secret
       - DB_NAME=inventory
     depends_on:
-      - mysql
-
+      mysql:
+        condition: service_healthy
+    networks:
+      - app-network
+      
   mysql:
     image: mysql:8.0
     restart: always
@@ -25,6 +27,16 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    networks:
+      - app-network
 
 volumes:
   mysql_data:
+
+networks:
+  app-network:
+    driver: bridge
