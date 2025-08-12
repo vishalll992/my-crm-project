@@ -1,7 +1,10 @@
 <?php
 session_start();
-
 require_once __DIR__ . '/components/connections.php';
+
+if (!$conn) {
+    die("Could not connect to database. Please check DB credentials and server status.");
+}
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST['username'];
@@ -105,5 +108,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 </body>
 </html>
+
 
 
