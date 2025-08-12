@@ -1,5 +1,5 @@
 <?php
-$servername = getenv("DB_HOST") ?: "localhost";  // Changed from "mysql"
+$servername = getenv("DB_HOST") ?: "127.0.0.1";  // Changed from "mysql"
 $username   = getenv("DB_USER") ?: "root";
 $password   = getenv("DB_PASS") ?: "secret";
 $dbname     = getenv("DB_NAME") ?: "inventory";
