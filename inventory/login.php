@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'components/connections.php';
+require_once __DIR__ . '/components/connections.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST['username'];
@@ -105,4 +105,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 </body>
 </html>
+
 
