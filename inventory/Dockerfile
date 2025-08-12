@@ -3,10 +3,10 @@ FROM php:8.2-apache
 # Install mysqli extension
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
-# Copy files to Apache web root
+# Copy files to Apache document root
 COPY . /var/www/html/
 
-# Enable Apache mod_rewrite
+# Enable Apache rewrite module
 RUN a2enmod rewrite
 
 # Set permissions
